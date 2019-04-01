@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qps-8P-2nM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hacker_news" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Hacker News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-D0-Jca">
+                                <rect key="frame" x="50" y="138" width="314" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mI-vH-Iw3">
+                                <rect key="frame" x="184" y="480" width="46" height="30"/>
+                                <state key="normal" title="Sports"/>
+                                <connections>
+                                    <action selector="sportsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HWq-Xo-zho"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COe-4t-iSb">
+                                <rect key="frame" x="192" y="300" width="30" height="30"/>
+                                <state key="normal" title="Arts"/>
+                                <connections>
+                                    <action selector="artsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vki-q6-YpI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-MB-sjD">
+                                <rect key="frame" x="182" y="420" width="50" height="30"/>
+                                <state key="normal" title="Politics"/>
+                                <connections>
+                                    <action selector="politicsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Cr-6l-cH9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCK-hL-Ekd">
+                                <rect key="frame" x="171.5" y="360" width="71" height="30"/>
+                                <state key="normal" title="Bollywood"/>
+                                <connections>
+                                    <action selector="bollywoodButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGn-So-Ige"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select any of the categories to see related news" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6H-Mc-EH7">
+                                <rect key="frame" x="20" y="209" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e6H-Mc-EH7" firstAttribute="top" secondItem="C5B-D0-Jca" secondAttribute="bottom" constant="50" id="6gp-Gi-gLi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C5B-D0-Jca" secondAttribute="trailing" constant="50" id="8FG-5Z-ntK"/>
+                            <constraint firstItem="COe-4t-iSb" firstAttribute="top" secondItem="e6H-Mc-EH7" secondAttribute="bottom" constant="50" id="9HQ-GC-l0P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e6H-Mc-EH7" secondAttribute="trailing" constant="20" id="AWr-Tg-0xR"/>
+                            <constraint firstItem="C5B-D0-Jca" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Hhb-w8-5wJ"/>
+                            <constraint firstItem="qtc-MB-sjD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="L4w-wI-8T3"/>
+                            <constraint firstItem="C5B-D0-Jca" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="LNB-VL-Mzi"/>
+                            <constraint firstItem="9mI-vH-Iw3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NTF-bi-i59"/>
+                            <constraint firstItem="SCK-hL-Ekd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="X1L-yw-7hm"/>
+                            <constraint firstItem="9mI-vH-Iw3" firstAttribute="top" secondItem="qtc-MB-sjD" secondAttribute="bottom" constant="30" id="Xmy-06-dc2"/>
+                            <constraint firstItem="qtc-MB-sjD" firstAttribute="top" secondItem="SCK-hL-Ekd" secondAttribute="bottom" constant="30" id="j1u-VD-EbG"/>
+                            <constraint firstItem="COe-4t-iSb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pud-94-XJS"/>
+                            <constraint firstItem="e6H-Mc-EH7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sro-E2-NEC"/>
+                            <constraint firstItem="SCK-hL-Ekd" firstAttribute="top" secondItem="COe-4t-iSb" secondAttribute="bottom" constant="30" id="yLX-Mm-SK9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AiB-ak-Uok"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X2H-9M-IHp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qps-8P-2nM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BnT-WU-eN8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vxa-0T-dRW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvn-Cs-r0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="759.375"/>
+        </scene>
+    </scenes>
+</document>
