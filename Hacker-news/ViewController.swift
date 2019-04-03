@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func artsButtonTapped(_ sender: Any) {

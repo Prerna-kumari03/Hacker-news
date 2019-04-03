@@ -20,7 +20,6 @@
 		0B1FE70C2250B2D800F11333 /* SingleNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1FE70A2250B2D800F11333 /* SingleNewsCell.xib */; };
 		0B1FE7102250B86D00F11333 /* NetworkRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1FE70F2250B86D00F11333 /* NetworkRequestHelper.swift */; };
 		651315572251D764007AD3DB /* NewsWebViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651315552251D764007AD3DB /* NewsWebViewerViewController.swift */; };
-		651315582251D764007AD3DB /* NewsWebViewerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 651315562251D764007AD3DB /* NewsWebViewerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		0B1FE70A2250B2D800F11333 /* SingleNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleNewsCell.xib; sourceTree = "<group>"; };
 		0B1FE70F2250B86D00F11333 /* NetworkRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestHelper.swift; sourceTree = "<group>"; };
 		651315552251D764007AD3DB /* NewsWebViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebViewerViewController.swift; sourceTree = "<group>"; };
-		651315562251D764007AD3DB /* NewsWebViewerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsWebViewerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +109,7 @@
 		0B1FE6D122509BC200F11333 /* Hacker-news */ = {
 			isa = PBXGroup;
 			children = (
+				6501E9F722548CEC0072EE6C /* model */,
 				0B1FE7112251070E00F11333 /* Controllers */,
 				0B1FE70D2250B84700F11333 /* Uitls */,
 				0B1FE7082250B2AE00F11333 /* UI */,
@@ -120,7 +119,6 @@
 				0B1FE6D922509BC300F11333 /* Assets.xcassets */,
 				0B1FE6DB22509BC300F11333 /* LaunchScreen.storyboard */,
 				0B1FE6DE22509BC300F11333 /* Info.plist */,
-				0B1FE7042250B1BF00F11333 /* NewsViewModel.swift */,
 			);
 			path = "Hacker-news";
 			sourceTree = "<group>";
@@ -164,10 +162,17 @@
 			isa = PBXGroup;
 			children = (
 				651315552251D764007AD3DB /* NewsWebViewerViewController.swift */,
-				651315562251D764007AD3DB /* NewsWebViewerViewController.xib */,
 				0B1FE7022250B18C00F11333 /* NewsTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6501E9F722548CEC0072EE6C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0B1FE7042250B1BF00F11333 /* NewsViewModel.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +281,6 @@
 			files = (
 				0B1FE6DD22509BC300F11333 /* LaunchScreen.storyboard in Resources */,
 				0B1FE6DA22509BC300F11333 /* Assets.xcassets in Resources */,
-				651315582251D764007AD3DB /* NewsWebViewerViewController.xib in Resources */,
 				0B1FE70C2250B2D800F11333 /* SingleNewsCell.xib in Resources */,
 				0B1FE6D822509BC200F11333 /* Main.storyboard in Resources */,
 			);

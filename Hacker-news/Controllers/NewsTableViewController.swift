@@ -9,13 +9,17 @@
 import UIKit
 
 class NewsTableViewController: UITableViewController {
+
+    static let maximumResponseCount = 15
     
-    let urlString: String
-    let searchCategory: SearchCategory
+    private let urlString = "​https://hn.algolia.com/api/v1/search"
+    private let searchCategory: SearchCategory
     
     var newsViewModels = [NewsViewModel]()
 
-    lazy var loadingIndicator: UIActivityIndicatorView = {
+    private var currentPageIndex = 0
+
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView(style: .gray)
         indicatorView.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
         indicatorView.center = view.center
@@ -26,7 +30,6 @@ class NewsTableViewController: UITableViewController {
     
     init(searchCategory: SearchCategory) {
         self.searchCategory = searchCategory
-        urlString = "​https://hn.algolia.com/api/v1/search"
         super.init(style: .plain)
     }
     
@@ -40,35 +43,15 @@ class NewsTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "SingleNewsCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         
-        NeworkRequestHelper.makeNetworkCall(for: searchCategory.rawValue) { [weak self] dataElements in
-            guard let strongSelf = self else {
-                return
-            }
-
-
-            for element in dataElements {
-                guard let title = element["title"] as? String,
-                    let author = element["author"] as? String,
-                    let url = element["url"] as? String else {
-                        print("guard else block")
-                    continue
-                }
-                strongSelf.newsViewModels.append(NewsViewModel(title: title, author: author, url: url))
-
-            }
-
-            print("strongSelf.newsViewModels.count \(strongSelf.newsViewModels.count)")
-            DispatchQueue.main.async { [weak strongSelf] in
-                strongSelf?.loadingIndicator.stopAnimating()
-                strongSelf?.tableView.reloadData()
-            }
-        }
+        makeNetworkCallIfNeeded()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        loadingIndicator.startAnimating()
+        if newsViewModels.count == 0 {
+            loadingIndicator.startAnimating()
+        }
     }
 
     // MARK: - Table view data source
@@ -104,6 +87,51 @@ class NewsTableViewController: UITableViewController {
         return SingleNewsCell.totalHeight
     }
 
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let tableViewHeight = tableView.bounds.height
+        let contentHeight = tableView.contentSize.height
+        let currentYOffset = scrollView.contentOffset.y
+        if currentYOffset >= (contentHeight - tableViewHeight) - 100 {
+            makeNetworkCallIfNeeded()
+        }
+    }
+
+    // MARK: - Private helper methods
+
+    private func makeNetworkCallIfNeeded() {
+        guard newsViewModels.count % NewsTableViewController.maximumResponseCount == 0,
+            !NeworkRequestHelper.sharedInstance.requestInPRogress else {
+            return
+        }
+        NeworkRequestHelper.sharedInstance.makeNetworkCall(for: searchCategory.rawValue, page: currentPageIndex) { [weak self] dataElements in
+            guard let strongSelf = self else {
+                return
+            }
+
+            let previousModelCount = strongSelf.newsViewModels.count
+
+            for element in dataElements {
+                guard let title = element["title"] as? String,
+                    let author = element["author"] as? String,
+                    let url = element["url"] as? String else {
+                        print("guard else block")
+                        continue
+                }
+                strongSelf.newsViewModels.append(NewsViewModel(title: title, author: author, url: url))
+
+            }
+
+            if strongSelf.newsViewModels.count > previousModelCount {
+                strongSelf.currentPageIndex += 1
+            }
+
+            DispatchQueue.main.async { [weak strongSelf] in
+                strongSelf?.loadingIndicator.stopAnimating()
+                strongSelf?.tableView.reloadData()
+            }
+        }
+    }
+
 }
 
 // SingleNewsCellTapDelegate
@@ -111,7 +139,6 @@ class NewsTableViewController: UITableViewController {
 extension NewsTableViewController: SingleNewsCellTapDelegate {
 
     func cellTapped(_ model: NewsViewModel) {
-        print("model.url \(model.url)")
         let webViewController = NewsWebViewerViewController(urlString: model.url)
         let navController = UINavigationController(rootViewController: webViewController)
         present(navController, animated: true, completion: nil)
